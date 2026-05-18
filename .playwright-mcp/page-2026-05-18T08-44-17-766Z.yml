@@ -1,0 +1,361 @@
+- generic [ref=e2]:
+  - generic [ref=e425]:
+    - link "Skip to Main" [ref=e426] [cursor=pointer]:
+      - /url: "#content"
+    - banner [ref=e427]:
+      - generic [ref=e428]:
+        - button "Toggle Sidebar" [ref=e429] [cursor=pointer]:
+          - img
+          - generic [ref=e430]: Toggle Sidebar
+        - link "Go to home" [ref=e431] [cursor=pointer]:
+          - /url: /
+          - img "Logo" [ref=e433]
+          - generic [ref=e434]: New API
+        - generic [ref=e435]:
+          - navigation [ref=e437]:
+            - link "Home" [ref=e438] [cursor=pointer]:
+              - /url: /
+            - link "Console" [ref=e439] [cursor=pointer]:
+              - /url: /dashboard
+            - link "Model Square" [ref=e440] [cursor=pointer]:
+              - /url: /pricing
+            - link "Rankings" [ref=e441] [cursor=pointer]:
+              - /url: /rankings
+            - link "Docs" [ref=e442] [cursor=pointer]:
+              - /url: https://docs.newapi.pro
+            - link "About" [ref=e443] [cursor=pointer]:
+              - /url: /about
+          - button "Search" [ref=e444] [cursor=pointer]:
+            - img
+            - generic [ref=e445]: Search
+            - generic:
+              - generic: ⌘
+              - text: K
+          - button "Notifications" [ref=e447] [cursor=pointer]:
+            - img
+          - button "Change language" [ref=e448] [cursor=pointer]:
+            - img
+            - generic [ref=e449]: Change language
+          - button "Open theme settings" [ref=e450] [cursor=pointer]:
+            - img
+          - button "A" [ref=e451] [cursor=pointer]:
+            - generic [ref=e453]: A
+    - generic [ref=e454]:
+      - generic [ref=e457]:
+        - generic [ref=e458]:
+          - generic [ref=e459]:
+            - generic [ref=e460]: Chat
+            - list [ref=e461]:
+              - listitem [ref=e462]:
+                - link "Playground" [ref=e463] [cursor=pointer]:
+                  - /url: /playground
+                  - img [ref=e464]
+                  - generic [ref=e466]: Playground
+              - listitem [ref=e467]:
+                - button "Chat" [ref=e468] [cursor=pointer]:
+                  - img [ref=e469]
+                  - generic [ref=e471]: Chat
+                  - img [ref=e472]
+          - generic [ref=e474]:
+            - generic [ref=e475]: General
+            - list [ref=e476]:
+              - listitem [ref=e477]:
+                - link "Overview" [ref=e478] [cursor=pointer]:
+                  - /url: /dashboard/overview
+                  - img [ref=e479]
+                  - generic [ref=e481]: Overview
+              - listitem [ref=e482]:
+                - link "Dashboard" [ref=e483] [cursor=pointer]:
+                  - /url: /dashboard/models
+                  - img [ref=e484]
+                  - generic [ref=e489]: Dashboard
+              - listitem [ref=e490]:
+                - link "API Keys" [ref=e491] [cursor=pointer]:
+                  - /url: /keys
+                  - img [ref=e492]
+                  - generic [ref=e496]: API Keys
+              - listitem [ref=e497]:
+                - link "Usage Logs" [ref=e498] [cursor=pointer]:
+                  - /url: /usage-logs/common
+                  - img [ref=e499]
+                  - generic [ref=e502]: Usage Logs
+              - listitem [ref=e503]:
+                - link "Task Logs" [ref=e504] [cursor=pointer]:
+                  - /url: /usage-logs/task
+                  - img [ref=e505]
+                  - generic [ref=e508]: Task Logs
+          - generic [ref=e509]:
+            - generic [ref=e510]: Personal
+            - list [ref=e511]:
+              - listitem [ref=e512]:
+                - link "Wallet" [ref=e513] [cursor=pointer]:
+                  - /url: /wallet
+                  - img [ref=e514]
+                  - generic [ref=e517]: Wallet
+              - listitem [ref=e518]:
+                - link "Profile" [ref=e519] [cursor=pointer]:
+                  - /url: /profile
+                  - img [ref=e520]
+                  - generic [ref=e523]: Profile
+          - generic [ref=e524]:
+            - generic [ref=e525]: Admin
+            - list [ref=e526]:
+              - listitem [ref=e527]:
+                - link "Channels" [ref=e528] [cursor=pointer]:
+                  - /url: /channels
+                  - img [ref=e529]
+                  - generic [ref=e535]: Channels
+              - listitem [ref=e536]:
+                - link "Models" [ref=e537] [cursor=pointer]:
+                  - /url: /models/metadata
+                  - img [ref=e538]
+                  - generic [ref=e541]: Models
+              - listitem [ref=e542]:
+                - link "Users" [ref=e543] [cursor=pointer]:
+                  - /url: /users
+                  - img [ref=e544]
+                  - generic [ref=e549]: Users
+              - listitem [ref=e550]:
+                - link "Redemption Codes" [ref=e551] [cursor=pointer]:
+                  - /url: /redemption-codes
+                  - img [ref=e552]
+                  - generic [ref=e554]: Redemption Codes
+              - listitem [ref=e555]:
+                - link "Subscription Management" [ref=e556] [cursor=pointer]:
+                  - /url: /subscriptions
+                  - img [ref=e557]
+                  - generic [ref=e559]: Subscription Management
+              - listitem [ref=e560]:
+                - link "System Settings" [ref=e561] [cursor=pointer]:
+                  - /url: /system-settings/site
+                  - img [ref=e562]
+                  - generic [ref=e565]: System Settings
+        - button "Toggle Sidebar" [ref=e566]
+      - main [ref=e567]:
+        - main [ref=e569]:
+          - heading "Overview" [level=2] [ref=e573]
+          - generic [ref=e576]:
+            - generic [ref=e577]:
+              - generic [ref=e579]:
+                - generic:
+                  - generic: "const request = await client.responses.create({ model: 'gpt-4.1-mini', input: 'Start routing traffic', }) if (request.output_text) { console.log(request.output_text) }"
+                - generic [ref=e580]:
+                  - generic [ref=e581]:
+                    - generic [ref=e582]:
+                      - generic [ref=e583]:
+                        - generic [ref=e584]:
+                          - img [ref=e585]
+                          - text: Get started
+                        - heading "Build on your API gateway in minutes" [level=3] [ref=e588]
+                        - paragraph [ref=e589]: A focused home for keys, balance, routing, and service health.
+                      - generic [ref=e590]:
+                        - button "Hide setup guide" [ref=e591] [cursor=pointer]:
+                          - img
+                          - text: Hide setup guide
+                        - button "Create API Key" [ref=e592] [cursor=pointer]:
+                          - img
+                          - text: Create API Key
+                    - list [ref=e593]:
+                      - listitem [ref=e594]:
+                        - img [ref=e597]
+                        - link "1. Create API Key Create a key for your app or service" [ref=e599] [cursor=pointer]:
+                          - /url: /keys
+                          - generic [ref=e600]:
+                            - img [ref=e602]
+                            - generic [ref=e605]:
+                              - generic [ref=e606]:
+                                - generic [ref=e607]: "1."
+                                - generic [ref=e608]: Create API Key
+                              - generic [ref=e609]: Create a key for your app or service
+                          - img [ref=e610]
+                      - listitem [ref=e612]:
+                        - img [ref=e615]
+                        - link "2. Add credits Keep enough balance before production traffic" [ref=e617] [cursor=pointer]:
+                          - /url: /wallet
+                          - generic [ref=e618]:
+                            - img [ref=e620]
+                            - generic [ref=e622]:
+                              - generic [ref=e623]:
+                                - generic [ref=e624]: "2."
+                                - generic [ref=e625]: Add credits
+                              - generic [ref=e626]: Keep enough balance before production traffic
+                          - img [ref=e627]
+                      - listitem [ref=e629]:
+                        - img [ref=e631]
+                        - link "3. Send a request Verify routing with Playground or your client" [ref=e633] [cursor=pointer]:
+                          - /url: /playground
+                          - generic [ref=e634]:
+                            - img [ref=e636]
+                            - generic [ref=e639]:
+                              - generic [ref=e640]:
+                                - generic [ref=e641]: "3."
+                                - generic [ref=e642]: Send a request
+                              - generic [ref=e643]: Verify routing with Playground or your client
+                          - img [ref=e644]
+                  - generic [ref=e646]:
+                    - generic [ref=e647]:
+                      - generic [ref=e648]:
+                        - img [ref=e650]
+                        - generic [ref=e653]:
+                          - generic [ref=e654]: First API request
+                          - generic [ref=e655]: Create an API key to unlock the real request
+                      - button "Create API Key" [ref=e656] [cursor=pointer]
+                    - generic [ref=e662]:
+                      - code [ref=e663]: curl http://127.0.0.1:3000/v1/chat/completions \
+                      - code [ref=e664]: "-H \"Content-Type: application/json\" \\"
+                      - code [ref=e665]: "-H \"Authorization: Bearer sk-...\" \\"
+                      - code [ref=e666]: "-d '{\"model\":\"gpt-4o-mini\",\"messages\":[{\"role\":\"user\",\"content\":\"Say hello in one sentence.\"}]}'"
+                    - generic [ref=e667]:
+                      - generic [ref=e668]:
+                        - generic [ref=e669]:
+                          - img [ref=e670]
+                          - generic [ref=e677]: Route active
+                        - generic [ref=e678]: Current domain
+                      - generic [ref=e679]:
+                        - generic [ref=e680]:
+                          - img [ref=e681]
+                          - generic [ref=e684]: Auth configured
+                        - generic [ref=e685]: Needs API key
+                      - generic [ref=e686]:
+                        - generic [ref=e687]:
+                          - img [ref=e688]
+                          - generic [ref=e691]: Model selected
+                        - generic [ref=e692]: Loading
+              - generic [ref=e694]:
+                - generic [ref=e695]:
+                  - generic [ref=e696]: Recommended actions
+                  - heading "Keep the platform ready" [level=3] [ref=e697]
+                - generic [ref=e698]:
+                  - button "Playground Test models and prompts from the browser" [ref=e699] [cursor=pointer]:
+                    - generic [ref=e700]:
+                      - img
+                    - generic [ref=e701]:
+                      - generic [ref=e702]: Playground
+                      - generic [ref=e703]: Test models and prompts from the browser
+                  - button "Channels Configure upstream providers and routing." [ref=e704] [cursor=pointer]:
+                    - generic [ref=e705]:
+                      - img
+                    - generic [ref=e706]:
+                      - generic [ref=e707]: Channels
+                      - generic [ref=e708]: Configure upstream providers and routing.
+                  - button "Usage Logs Inspect requests, errors, and billing details" [ref=e709] [cursor=pointer]:
+                    - generic [ref=e710]:
+                      - img
+                    - generic [ref=e711]:
+                      - generic [ref=e712]: Usage Logs
+                      - generic [ref=e713]: Inspect requests, errors, and billing details
+                  - button "Pricing Review model rates before scaling traffic" [ref=e714] [cursor=pointer]:
+                    - generic [ref=e715]:
+                      - img
+                    - generic [ref=e716]:
+                      - generic [ref=e717]: Pricing
+                      - generic [ref=e718]: Review model rates before scaling traffic
+            - generic [ref=e720]:
+              - generic [ref=e721]:
+                - generic [ref=e723]:
+                  - heading "Usage at a glance" [level=3] [ref=e724]
+                  - paragraph [ref=e725]: Monitor balance, usage, and request volume
+                - generic [ref=e726]:
+                  - generic [ref=e728]:
+                    - generic [ref=e730]:
+                      - img [ref=e731]
+                      - generic [ref=e733]: Last 24h usage
+                    - generic [ref=e734]:
+                      - generic [ref=e735]: $0
+                      - paragraph [ref=e736]: Consumed in the last 24 hours (USD)
+                    - img [ref=e738]
+                  - generic [ref=e741]:
+                    - generic [ref=e743]:
+                      - img [ref=e744]
+                      - generic [ref=e747]: Historical Usage
+                    - generic [ref=e748]:
+                      - generic [ref=e749]: $0
+                      - paragraph [ref=e750]: Total consumed (USD)
+                    - img [ref=e752]
+                  - generic [ref=e755]:
+                    - generic [ref=e757]:
+                      - img [ref=e758]
+                      - generic [ref=e760]: Request Count
+                    - generic [ref=e761]:
+                      - generic [ref=e762]: "0"
+                      - paragraph [ref=e763]: Total requests made
+                    - img [ref=e765]
+              - generic [ref=e767]:
+                - generic [ref=e768]:
+                  - generic [ref=e769]:
+                    - generic [ref=e770]: Credit remaining
+                    - generic [ref=e773]: Healthy
+                  - generic [ref=e774]: $200
+                  - generic [ref=e775]:
+                    - generic [ref=e776]:
+                      - generic [ref=e777]:
+                        - img [ref=e778]
+                        - generic [ref=e780]: Last 24h usage
+                      - generic [ref=e781]: $0
+                    - generic [ref=e782]:
+                      - generic [ref=e783]:
+                        - img [ref=e784]
+                        - generic [ref=e787]: Runway
+                      - generic [ref=e788]: No recent usage
+                - button "Wallet" [ref=e789] [cursor=pointer]:
+                  - generic [ref=e790]: Wallet
+                  - img
+            - generic [ref=e791]:
+              - generic [ref=e792]:
+                - generic [ref=e794]:
+                  - generic [ref=e795]:
+                    - img [ref=e796]
+                    - heading "Performance health" [level=3] [ref=e799]
+                    - generic [ref=e800]: Performance metrics for the last 24 hours
+                  - generic [ref=e802]:
+                    - generic [ref=e803]:
+                      - generic [ref=e804]:
+                        - img [ref=e805]
+                        - generic [ref=e808]: Success rate
+                      - generic [ref=e809]: —
+                    - generic [ref=e810]:
+                      - generic [ref=e811]:
+                        - img [ref=e812]
+                        - generic [ref=e815]: Average latency
+                      - generic [ref=e816]: —
+                    - generic [ref=e817]:
+                      - generic [ref=e818]:
+                        - img [ref=e819]
+                        - generic [ref=e822]: Throughput
+                      - generic [ref=e823]: —
+                - generic [ref=e825]:
+                  - generic [ref=e827]:
+                    - generic [ref=e829]:
+                      - img [ref=e830]
+                      - text: API Info
+                    - generic [ref=e834]: Configured routes and latency checks
+                  - generic [ref=e835]: No API routes configured
+                - generic [ref=e837]:
+                  - generic [ref=e839]:
+                    - generic [ref=e841]:
+                      - img [ref=e842]
+                      - text: Announcements
+                    - generic [ref=e845]: Latest platform updates and notices
+                  - generic [ref=e846]: No announcements at this time
+                - generic [ref=e848]:
+                  - generic [ref=e850]:
+                    - generic [ref=e852]:
+                      - img [ref=e853]
+                      - text: FAQ
+                    - generic [ref=e856]: Answers for common access and billing questions
+                  - generic [ref=e857]: No FAQ entries available
+              - generic [ref=e859]:
+                - generic [ref=e861]:
+                  - generic [ref=e863]:
+                    - img [ref=e864]
+                    - text: Uptime
+                  - generic [ref=e866]: Grouped monitor status from Uptime Kuma
+                - generic [ref=e867]: No uptime monitoring configured
+  - generic [ref=e868]:
+    - heading "Command Palette" [level=2] [ref=e869]
+    - paragraph [ref=e870]: Search for a command to run...
+  - region "Notifications alt+T":
+    - list:
+      - listitem [ref=e871]:
+        - img [ref=e873]
+        - generic [ref=e877]: Welcome back!

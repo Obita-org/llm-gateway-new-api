@@ -1,0 +1,63 @@
+- generic [ref=e2]:
+  - generic [ref=e6]:
+    - button "Change language" [ref=e8] [cursor=pointer]:
+      - img
+      - generic [ref=e9]: Change language
+    - generic [ref=e10]:
+      - generic [ref=e11]:
+        - img "System logo" [ref=e13]
+        - heading "Initialize New API" [level=1] [ref=e14]
+        - paragraph [ref=e15]: Follow the guided steps to prepare your workspace before the first login.
+      - generic [ref=e16]:
+        - generic [ref=e17]:
+          - generic [ref=e18]: System setup wizard
+          - generic [ref=e19]: Complete these steps to finish the initial installation.
+        - generic [ref=e20]:
+          - list [ref=e21]:
+            - listitem [ref=e22]:
+              - generic [ref=e23]:
+                - generic [ref=e24]: "1"
+                - generic [ref=e25]:
+                  - paragraph [ref=e26]: Database check
+                  - paragraph [ref=e27]: Verify your database connection
+            - listitem [ref=e28]:
+              - generic [ref=e29]:
+                - generic [ref=e30]: "2"
+                - generic [ref=e31]:
+                  - paragraph [ref=e32]: Administrator account
+                  - paragraph [ref=e33]: Create credentials for the root user
+            - listitem [ref=e34]:
+              - generic [ref=e35]:
+                - generic [ref=e36]: "3"
+                - generic [ref=e37]:
+                  - paragraph [ref=e38]: Usage mode
+                  - paragraph [ref=e39]: Choose how the platform will operate
+            - listitem [ref=e40]:
+              - generic [ref=e41]:
+                - generic [ref=e42]: "4"
+                - generic [ref=e43]:
+                  - paragraph [ref=e44]: Review & initialize
+                  - paragraph [ref=e45]: Confirm settings and finish setup
+          - generic [ref=e70]:
+            - generic [ref=e71]:
+              - generic [ref=e72]: Administrator username
+              - textbox "Administrator username" [ref=e73]:
+                - /placeholder: Choose a username
+            - generic [ref=e74]:
+              - generic [ref=e75]: Password
+              - generic [ref=e76]:
+                - textbox "Password" [ref=e77]:
+                  - /placeholder: Set a secure password (min. 8 characters)
+                - button "Toggle password visibility" [ref=e78] [cursor=pointer]:
+                  - img
+            - generic [ref=e79]:
+              - generic [ref=e80]: Confirm password
+              - generic [ref=e81]:
+                - textbox "Confirm password" [ref=e82]:
+                  - /placeholder: Repeat the administrator password
+                - button "Toggle password visibility" [ref=e83] [cursor=pointer]:
+                  - img
+        - generic [ref=e67]:
+          - button "Back" [ref=e85] [cursor=pointer]
+          - button "Next" [active] [ref=e69] [cursor=pointer]
+  - region "Notifications alt+T"

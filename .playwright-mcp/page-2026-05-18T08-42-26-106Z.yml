@@ -1,0 +1,56 @@
+- generic [ref=e2]:
+  - generic [ref=e6]:
+    - button "Change language" [ref=e8] [cursor=pointer]:
+      - img
+      - generic [ref=e9]: Change language
+    - generic [ref=e10]:
+      - generic [ref=e11]:
+        - img "System logo" [ref=e13]
+        - heading "Initialize New API" [level=1] [ref=e14]
+        - paragraph [ref=e15]: Follow the guided steps to prepare your workspace before the first login.
+      - generic [ref=e16]:
+        - generic [ref=e17]:
+          - generic [ref=e18]: System setup wizard
+          - generic [ref=e19]: Complete these steps to finish the initial installation.
+        - generic [ref=e20]:
+          - list [ref=e21]:
+            - listitem [ref=e22]:
+              - generic [ref=e23]:
+                - generic [ref=e24]: "1"
+                - generic [ref=e25]:
+                  - paragraph [ref=e26]: Database check
+                  - paragraph [ref=e27]: Verify your database connection
+            - listitem [ref=e28]:
+              - generic [ref=e29]:
+                - generic [ref=e30]: "2"
+                - generic [ref=e31]:
+                  - paragraph [ref=e32]: Administrator account
+                  - paragraph [ref=e33]: Create credentials for the root user
+            - listitem [ref=e34]:
+              - generic [ref=e35]:
+                - generic [ref=e36]: "3"
+                - generic [ref=e37]:
+                  - paragraph [ref=e38]: Usage mode
+                  - paragraph [ref=e39]: Choose how the platform will operate
+            - listitem [ref=e40]:
+              - generic [ref=e41]:
+                - generic [ref=e42]: "4"
+                - generic [ref=e43]:
+                  - paragraph [ref=e44]: Review & initialize
+                  - paragraph [ref=e45]: Confirm settings and finish setup
+          - generic [ref=e47]:
+            - generic [ref=e48]:
+              - generic [ref=e49]:
+                - paragraph [ref=e50]: Detected database
+                - paragraph [ref=e51]: SQLite
+                - paragraph [ref=e52]: SQLite stores all data in a single file. Make sure that file is persisted when running in containers.
+              - generic [ref=e53]:
+                - img [ref=e55]
+                - generic [ref=e59]: SQLite
+            - alert [ref=e60]:
+              - generic [ref=e61]:
+                - img [ref=e62]
+                - text: Persist your data file
+              - paragraph [ref=e65]: When running in containers or ephemeral environments, ensure the SQLite file is mapped to persistent storage to avoid data loss on restart.
+        - button "Next" [ref=e69] [cursor=pointer]
+  - region "Notifications alt+T"

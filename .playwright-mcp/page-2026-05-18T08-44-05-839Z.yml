@@ -1,0 +1,36 @@
+- generic [ref=e2]:
+  - generic [ref=e402]:
+    - link "Logo New API" [ref=e403] [cursor=pointer]:
+      - /url: /
+      - img "Logo" [ref=e405]
+      - heading "New API" [level=1] [ref=e406]
+    - generic [ref=e409]:
+      - generic [ref=e410]:
+        - heading "Sign in" [level=2] [ref=e411]
+        - paragraph [ref=e412]:
+          - text: Don't have an account?
+          - link "Sign up" [ref=e413] [cursor=pointer]:
+            - /url: /sign-up
+          - text: .
+      - generic [ref=e414]:
+        - generic [ref=e415]:
+          - generic [ref=e416]: Username or Email
+          - textbox "Username or Email" [ref=e417]:
+            - /placeholder: Enter your username or email
+        - generic [ref=e418]:
+          - generic [ref=e419]: Password
+          - generic [ref=e420]:
+            - textbox "Password" [ref=e421]:
+              - /placeholder: Enter password
+            - button "Toggle password visibility" [ref=e422] [cursor=pointer]:
+              - img
+          - link "Forgot password?" [ref=e423] [cursor=pointer]:
+            - /url: /forgot-password
+        - button "Sign in" [ref=e424] [cursor=pointer]:
+          - img
+          - text: Sign in
+  - region "Notifications alt+T":
+    - list:
+      - listitem [ref=e395]:
+        - img [ref=e397]
+        - generic [ref=e401]: System initialized successfully! Redirecting…

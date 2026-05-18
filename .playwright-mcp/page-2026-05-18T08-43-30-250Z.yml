@@ -1,0 +1,68 @@
+- generic [ref=e2]:
+  - generic [ref=e6]:
+    - button "Change language" [ref=e8] [cursor=pointer]:
+      - img
+      - generic [ref=e9]: Change language
+    - generic [ref=e10]:
+      - generic [ref=e11]:
+        - img "System logo" [ref=e13]
+        - heading "Initialize New API" [level=1] [ref=e14]
+        - paragraph [ref=e15]: Follow the guided steps to prepare your workspace before the first login.
+      - generic [ref=e16]:
+        - generic [ref=e17]:
+          - generic [ref=e18]: System setup wizard
+          - generic [ref=e19]: Complete these steps to finish the initial installation.
+        - generic [ref=e20]:
+          - list [ref=e21]:
+            - listitem [ref=e22]:
+              - generic [ref=e23]:
+                - generic [ref=e24]: "1"
+                - generic [ref=e25]:
+                  - paragraph [ref=e26]: Database check
+                  - paragraph [ref=e27]: Verify your database connection
+            - listitem [ref=e28]:
+              - generic [ref=e29]:
+                - generic [ref=e30]: "2"
+                - generic [ref=e31]:
+                  - paragraph [ref=e32]: Administrator account
+                  - paragraph [ref=e33]: Create credentials for the root user
+            - listitem [ref=e34]:
+              - generic [ref=e35]:
+                - generic [ref=e36]: "3"
+                - generic [ref=e37]:
+                  - paragraph [ref=e38]: Usage mode
+                  - paragraph [ref=e39]: Choose how the platform will operate
+            - listitem [ref=e40]:
+              - generic [ref=e41]:
+                - generic [ref=e42]: "4"
+                - generic [ref=e43]:
+                  - paragraph [ref=e44]: Review & initialize
+                  - paragraph [ref=e45]: Confirm settings and finish setup
+          - generic [ref=e86]:
+            - generic [ref=e87]: How will you use the platform?
+            - radiogroup [ref=e88]:
+              - generic [ref=e90] [cursor=pointer]:
+                - radio "External operations Serve multiple users or teams with billing and quota control." [checked] [ref=e91]
+                - radio [checked] [ref=e94]
+                - generic [ref=e95]:
+                  - generic [ref=e96]: External operations
+                  - paragraph [ref=e97]: Serve multiple users or teams with billing and quota control.
+                - img [ref=e98]
+              - generic [ref=e103] [cursor=pointer]:
+                - radio "Personal use Best for single-tenant deployments. Pricing and billing options stay hidden." [ref=e104]
+                - radio [ref=e105]
+                - generic [ref=e106]:
+                  - generic [ref=e107]: Personal use
+                  - paragraph [ref=e108]: Best for single-tenant deployments. Pricing and billing options stay hidden.
+                - img [ref=e109]
+              - generic [ref=e113] [cursor=pointer]:
+                - radio "Demo site Showcase core capabilities with demo credentials and limited access." [ref=e114]
+                - radio [ref=e115]
+                - generic [ref=e116]:
+                  - generic [ref=e117]: Demo site
+                  - paragraph [ref=e118]: Showcase core capabilities with demo credentials and limited access.
+                - img [ref=e119]
+        - generic [ref=e67]:
+          - button "Back" [ref=e85] [cursor=pointer]
+          - button "Next" [active] [ref=e69] [cursor=pointer]
+  - region "Notifications alt+T"

@@ -1,0 +1,65 @@
+- generic [ref=e2]:
+  - generic [ref=e6]:
+    - button "Change language" [ref=e8] [cursor=pointer]:
+      - img
+      - generic [ref=e9]: Change language
+    - generic [ref=e10]:
+      - generic [ref=e11]:
+        - img "System logo" [ref=e13]
+        - heading "Initialize New API" [level=1] [ref=e14]
+        - paragraph [ref=e15]: Follow the guided steps to prepare your workspace before the first login.
+      - generic [ref=e16]:
+        - generic [ref=e17]:
+          - generic [ref=e18]: System setup wizard
+          - generic [ref=e19]: Complete these steps to finish the initial installation.
+        - generic [ref=e20]:
+          - list [ref=e21]:
+            - listitem [ref=e22]:
+              - generic [ref=e23]:
+                - generic [ref=e24]: "1"
+                - generic [ref=e25]:
+                  - paragraph [ref=e26]: Database check
+                  - paragraph [ref=e27]: Verify your database connection
+            - listitem [ref=e28]:
+              - generic [ref=e29]:
+                - generic [ref=e30]: "2"
+                - generic [ref=e31]:
+                  - paragraph [ref=e32]: Administrator account
+                  - paragraph [ref=e33]: Create credentials for the root user
+            - listitem [ref=e34]:
+              - generic [ref=e35]:
+                - generic [ref=e36]: "3"
+                - generic [ref=e37]:
+                  - paragraph [ref=e38]: Usage mode
+                  - paragraph [ref=e39]: Choose how the platform will operate
+            - listitem [ref=e40]:
+              - generic [ref=e41]:
+                - generic [ref=e42]: "4"
+                - generic [ref=e43]:
+                  - paragraph [ref=e44]: Review & initialize
+                  - paragraph [ref=e45]: Confirm settings and finish setup
+          - generic [ref=e122]:
+            - img [ref=e124]
+            - generic [ref=e127]:
+              - heading "Ready to initialize" [level=2] [ref=e128]
+              - paragraph [ref=e129]: Double check the configuration below. Your system will be locked until initialization is complete.
+            - generic [ref=e131]:
+              - generic [ref=e132]:
+                - term [ref=e133]: Database
+                - definition [ref=e134]:
+                  - generic [ref=e135]: sqlite
+                  - generic [ref=e138]: sqlite
+              - separator [ref=e139]
+              - generic [ref=e140]:
+                - term [ref=e141]: Administrator account
+                - definition [ref=e142]: admin
+              - separator [ref=e143]
+              - generic [ref=e144]:
+                - term [ref=e145]: Usage mode
+                - definition [ref=e146]: External operations mode
+        - generic [ref=e67]:
+          - button "Back" [ref=e85] [cursor=pointer]
+          - button "Initialize system" [ref=e147] [cursor=pointer]:
+            - img
+            - text: Initialize system
+  - region "Notifications alt+T"

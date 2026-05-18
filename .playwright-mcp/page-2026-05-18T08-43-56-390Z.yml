@@ -1,0 +1,232 @@
+- generic [ref=e2]:
+  - generic [ref=e148]:
+    - banner:
+      - navigation [ref=e150]:
+        - link "logo New API" [ref=e151] [cursor=pointer]:
+          - /url: /
+          - img "logo" [ref=e153]
+          - generic [ref=e154]: New API
+        - generic [ref=e155]:
+          - link "Home" [ref=e156] [cursor=pointer]:
+            - /url: /
+          - link "Console" [ref=e157] [cursor=pointer]:
+            - /url: /dashboard
+          - link "Model Square" [ref=e158] [cursor=pointer]:
+            - /url: /pricing
+          - link "Rankings" [ref=e159] [cursor=pointer]:
+            - /url: /rankings
+          - link "Docs" [ref=e160] [cursor=pointer]:
+            - /url: https://docs.newapi.pro
+          - link "About" [ref=e161] [cursor=pointer]:
+            - /url: /about
+          - button "Change language" [ref=e163] [cursor=pointer]:
+            - img
+            - generic [ref=e164]: Change language
+          - button "Toggle theme" [ref=e165] [cursor=pointer]:
+            - img
+            - generic [ref=e166]: Toggle theme
+          - button "Notifications" [ref=e168] [cursor=pointer]:
+            - img
+          - button "Sign in" [ref=e170] [cursor=pointer]
+    - generic [ref=e171]:
+      - generic [ref=e173]:
+        - heading "Unified API Gateway for All Your AI Models" [level=1] [ref=e174]:
+          - text: Unified API Gateway for
+          - text: All Your AI Models
+        - paragraph [ref=e175]: Power AI applications, manage digital assets, connect the Future
+        - generic [ref=e176]:
+          - button "Get Started" [ref=e177] [cursor=pointer]:
+            - text: Get Started
+            - img
+          - button "View Pricing" [ref=e178] [cursor=pointer]
+      - generic [ref=e181]:
+        - generic [ref=e182]:
+          - button "Chat" [ref=e183] [cursor=pointer]
+          - button "Responses" [ref=e184] [cursor=pointer]
+          - button "Claude" [ref=e185] [cursor=pointer]
+          - button "Gemini" [ref=e186] [cursor=pointer]
+          - generic [ref=e189]: 200 ok
+        - generic [ref=e190]:
+          - generic [ref=e191]: POST
+          - code [ref=e192]: /v1/chat/completions
+        - generic [ref=e193]:
+          - generic [ref=e194]:
+            - text: Request
+            - generic [ref=e195]:
+              - generic [ref=e196]:
+                - text: curl -X POST
+                - generic [ref=e197]: "\"/v1/chat/completions\""
+                - text: \
+              - generic [ref=e198]: "-H \"Authorization: Bearer sk-••••\" \\"
+              - generic [ref=e199]:
+                - text: "-d"
+                - generic [ref=e200]: "'{"
+              - generic [ref=e201]: "\"model\": \"your-model\","
+              - generic [ref=e202]: "\"messages\": ["
+              - generic [ref=e203]: "{ \"role\": \"user\", \"content\": \"...\" }"
+              - generic [ref=e204]: "]"
+              - generic [ref=e206]: "}'"
+          - generic [ref=e207]:
+            - text: Response
+            - generic [ref=e208]:
+              - generic [ref=e209]: "{"
+              - generic [ref=e210]:
+                - generic [ref=e211]: "\"choices\": [{ \"message\": { \"content\":"
+                - text: "\"Chat request routed.\""
+                - generic [ref=e212]: "} }],"
+              - generic [ref=e213]:
+                - generic [ref=e214]: "\"usage\": { \"total_tokens\":"
+                - text: "27"
+                - generic [ref=e215]: "}"
+              - generic [ref=e216]: "}"
+        - generic [ref=e217]:
+          - generic [ref=e218]:
+            - generic [ref=e219]:
+              - generic [ref=e220]: "142"
+              - generic [ref=e221]: ms
+            - generic [ref=e223]:
+              - generic [ref=e224]: "27"
+              - generic [ref=e225]: tokens
+            - generic [ref=e227]:
+              - generic [ref=e228]: cost
+              - generic [ref=e229]: $0.00081
+          - generic [ref=e230]: stream · sse
+    - generic [ref=e233]:
+      - generic [ref=e234]:
+        - generic [ref=e236]: 0+
+        - generic [ref=e237]: upstream services integrated
+      - generic [ref=e238]:
+        - generic [ref=e240]: 0+
+        - generic [ref=e241]: model billing support
+      - generic [ref=e242]:
+        - generic [ref=e244]: 0+
+        - generic [ref=e245]: compatible API routes
+      - generic [ref=e246]:
+        - generic [ref=e248]: 0+
+        - generic [ref=e249]: scheduling controls
+    - generic [ref=e251]:
+      - generic [ref=e252]:
+        - paragraph [ref=e253]: Core Features
+        - heading "Built for developers, designed for scale" [level=2] [ref=e254]:
+          - text: Built for developers,
+          - text: designed for scale
+      - generic [ref=e255]:
+        - generic [ref=e256]:
+          - generic [ref=e257]:
+            - generic [ref=e258]: "01"
+            - heading "Lightning Fast" [level=3] [ref=e259]
+          - paragraph [ref=e260]: Optimized network architecture ensures millisecond response times
+          - generic [ref=e261]:
+            - generic [ref=e262]: OpenAI
+            - generic [ref=e263]: Claude
+            - generic [ref=e264]: Gemini
+            - generic [ref=e265]: DeepSeek
+            - generic [ref=e266]: Qwen
+            - generic [ref=e267]: Llama
+        - generic [ref=e268]:
+          - generic [ref=e269]:
+            - generic [ref=e270]: "02"
+            - heading "Secure & Reliable" [level=3] [ref=e271]
+          - paragraph [ref=e272]: Enterprise-grade security with comprehensive permission management
+          - generic [ref=e274]:
+            - img [ref=e276]
+            - img [ref=e279]
+        - generic [ref=e281]:
+          - generic [ref=e282]:
+            - generic [ref=e283]: "03"
+            - heading "Global Coverage" [level=3] [ref=e284]
+          - paragraph [ref=e285]: Multi-region deployment for stable global access
+          - generic [ref=e286]:
+            - generic [ref=e287]:
+              - generic [ref=e288]: "1"
+              - generic [ref=e290]: Load Balancing
+            - generic [ref=e291]:
+              - generic [ref=e292]: "2"
+              - generic [ref=e294]: Rate Limiting
+            - generic [ref=e295]:
+              - generic [ref=e296]: "3"
+              - generic [ref=e298]: Cost Tracking
+        - generic [ref=e299]:
+          - generic [ref=e300]:
+            - generic [ref=e301]: "04"
+            - heading "Developer Friendly" [level=3] [ref=e302]
+          - paragraph [ref=e303]: Compatible API routes for common AI application workflows
+          - generic [ref=e304]:
+            - generic [ref=e305]:
+              - generic [ref=e306]: API
+              - generic [ref=e307]: SDK
+              - generic [ref=e308]: CLI
+              - generic [ref=e309]: Docs
+            - generic [ref=e310]:
+              - img [ref=e311]
+              - text: Multi-protocol Compatible
+      - generic [ref=e314]:
+        - generic [ref=e315]:
+          - img [ref=e317]
+          - heading "High Performance" [level=3] [ref=e320]
+          - paragraph [ref=e321]: Support for high concurrency with automatic load balancing
+        - generic [ref=e322]:
+          - img [ref=e324]
+          - heading "Transparent Billing" [level=3] [ref=e326]
+          - paragraph [ref=e327]: Pay-as-you-go with real-time usage monitoring
+        - generic [ref=e328]:
+          - img [ref=e330]
+          - heading "Team Collaboration" [level=3] [ref=e335]
+          - paragraph [ref=e336]: Multi-user management with flexible permission allocation
+        - generic [ref=e337]:
+          - img [ref=e339]
+          - heading "Open Source" [level=3] [ref=e341]
+          - paragraph [ref=e342]: Community driven, self-hosted, and extensible
+    - generic [ref=e344]:
+      - generic [ref=e345]:
+        - paragraph [ref=e346]: How It Works
+        - heading "Three steps to get started" [level=2] [ref=e347]
+      - generic [ref=e348]:
+        - generic [ref=e349]:
+          - generic [ref=e350]:
+            - img [ref=e352]
+            - generic [ref=e355]: "1"
+          - heading "Configure" [level=3] [ref=e356]
+          - paragraph [ref=e357]: Add your API keys, set up channels and configure access permissions
+        - generic [ref=e358]:
+          - generic [ref=e359]:
+            - img [ref=e361]
+            - generic [ref=e363]: "2"
+          - heading "Connect" [level=3] [ref=e364]
+          - paragraph [ref=e365]: Connect through OpenAI, Claude, Gemini, and other compatible API routes
+        - generic [ref=e366]:
+          - generic [ref=e367]:
+            - img [ref=e369]
+            - generic [ref=e371]: "3"
+          - heading "Monitor" [level=3] [ref=e372]
+          - paragraph [ref=e373]: Track usage, costs and performance with real-time analytics
+    - generic [ref=e376]:
+      - heading "Ready to simplify your AI integration?" [level=2] [ref=e377]:
+        - text: Ready to simplify
+        - text: your AI integration?
+      - paragraph [ref=e378]: Deploy your own gateway and start routing requests through your configured upstream services.
+      - generic [ref=e379]:
+        - button "Get Started" [ref=e380] [cursor=pointer]:
+          - text: Get Started
+          - img
+        - button "View Pricing" [ref=e381] [cursor=pointer]
+    - contentinfo [ref=e382]:
+      - generic [ref=e383]:
+        - generic [ref=e385]:
+          - link "New API New API" [ref=e386] [cursor=pointer]:
+            - /url: /
+            - img "New API" [ref=e387]
+            - generic [ref=e388]: New API
+          - paragraph [ref=e389]: Powerful API Management Platform
+        - generic [ref=e390]:
+          - paragraph [ref=e391]: © 2026 New API. All rights reserved.
+          - generic [ref=e393]:
+            - text: © 2026
+            - link "New API" [ref=e394] [cursor=pointer]:
+              - /url: https://github.com/QuantumNous/new-api
+            - text: . All rights reserved. Designed and developed by the project contributors.
+  - region "Notifications alt+T":
+    - list:
+      - listitem [ref=e395]:
+        - img [ref=e397]
+        - generic [ref=e401]: System initialized successfully! Redirecting…
