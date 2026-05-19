@@ -1,0 +1,58 @@
+- generic [ref=e3]:
+  - generic [ref=e7]:
+    - link "logo" [ref=e9] [cursor=pointer]:
+      - /url: /
+      - img "logo" [ref=e12]
+    - navigation [ref=e17]
+    - generic [ref=e30]:
+      - button "System Notice" [ref=e31] [cursor=pointer]:
+        - img [ref=e33]
+      - button "Switch Theme" [ref=e37] [cursor=pointer]:
+        - img [ref=e39]
+      - button "Change Language" [ref=e41] [cursor=pointer]:
+        - img [ref=e43]
+  - generic [ref=e54]:
+    - main [ref=e55]:
+      - generic [ref=e59]:
+        - generic [ref=e60]:
+          - generic [ref=e61]: System initialization
+          - generic [ref=e62]: Welcome! Please complete the following settings to start using the system
+        - generic [ref=e64]:
+          - generic [ref=e66]:
+            - generic [ref=e69]: "1"
+            - generic [ref=e70]:
+              - generic [ref=e72]: Database Check
+              - generic [ref=e73]: Verify database connection status
+          - generic [ref=e75]:
+            - generic [ref=e78]: "2"
+            - generic [ref=e79]:
+              - generic [ref=e81]: Admin account
+              - generic [ref=e82]: Set administrator login information
+          - generic [ref=e84]:
+            - generic [ref=e87]: "3"
+            - generic [ref=e88]:
+              - generic [ref=e90]: Usage mode
+              - generic [ref=e91]: Select system running mode
+          - generic [ref=e93]:
+            - generic [ref=e96]: "4"
+            - generic [ref=e97]:
+              - generic [ref=e99]: Complete initialization
+              - generic [ref=e100]: Confirm settings and complete initialization
+        - generic [ref=e102]:
+          - generic [ref=e103]:
+            - alert [ref=e104]:
+              - generic [ref=e106]:
+                - img "success" [ref=e108]:
+                  - img [ref=e109]
+                - generic [ref=e111]:
+                  - generic [ref=e112]: Database Information
+                  - paragraph [ref=e115]: You are using the PostgreSQL database. PostgreSQL is a powerful open-source relational database system that provides excellent reliability and data integrity, suitable for production environments.
+            - button "Next" [ref=e117] [cursor=pointer]:
+              - generic [ref=e118]: Next
+          - text: "* * *"
+    - generic [ref=e123]:
+      - generic [ref=e125]: © 2026 New API. All rights reserved
+      - generic [ref=e126]:
+        - generic [ref=e127]: Designed & Developed by
+        - link "New API" [ref=e128] [cursor=pointer]:
+          - /url: https://github.com/QuantumNous/new-api

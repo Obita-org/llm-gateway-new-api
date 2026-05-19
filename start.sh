@@ -5,6 +5,11 @@ ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 DEFAULT_FRONTEND_DIR="$ROOT_DIR/web/default"
 CLASSIC_FRONTEND_DIR="$ROOT_DIR/web/classic"
 VERSION_FILE="$ROOT_DIR/VERSION"
+DEFAULT_POSTGRES_HOST="${POSTGRES_HOST:-127.0.0.1}"
+DEFAULT_POSTGRES_PORT="${POSTGRES_PORT:-5432}"
+DEFAULT_POSTGRES_USER="${POSTGRES_USER:-root}"
+DEFAULT_POSTGRES_PASSWORD="${POSTGRES_PASSWORD:-123456}"
+DEFAULT_POSTGRES_DB="${POSTGRES_DB:-new-api}"
 
 log() {
   printf '[start.sh] %s\n' "$*"
@@ -12,6 +17,27 @@ log() {
 
 warn() {
   printf '[start.sh] WARN: %s\n' "$*" >&2
+}
+
+is_tcp_port_open() {
+  local host="$1"
+  local port="$2"
+  (echo >/dev/tcp/"$host"/"$port") >/dev/null 2>&1
+}
+
+configure_default_sql_dsn() {
+  if [ -n "${SQL_DSN:-}" ]; then
+    log "Using SQL_DSN from environment"
+    return
+  fi
+
+  if is_tcp_port_open "$DEFAULT_POSTGRES_HOST" "$DEFAULT_POSTGRES_PORT"; then
+    export SQL_DSN="postgresql://${DEFAULT_POSTGRES_USER}:${DEFAULT_POSTGRES_PASSWORD}@${DEFAULT_POSTGRES_HOST}:${DEFAULT_POSTGRES_PORT}/${DEFAULT_POSTGRES_DB}"
+    log "Detected PostgreSQL on ${DEFAULT_POSTGRES_HOST}:${DEFAULT_POSTGRES_PORT}; using it by default"
+    return
+  fi
+
+  log "PostgreSQL not detected on ${DEFAULT_POSTGRES_HOST}:${DEFAULT_POSTGRES_PORT}; falling back to SQLite"
 }
 
 pick_pkg_manager() {
@@ -110,6 +136,8 @@ if ! build_frontend "$CLASSIC_FRONTEND_DIR" "$CLASSIC_PM" "$VERSION_VALUE"; then
   warn "Classic frontend build failed; falling back to a minimal placeholder page."
   ensure_classic_placeholder
 fi
+
+configure_default_sql_dsn
 
 log "Starting backend on http://localhost:${PORT:-3000}"
 cd "$ROOT_DIR"

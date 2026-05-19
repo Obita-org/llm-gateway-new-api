@@ -21,14 +21,163 @@ import react from '@vitejs/plugin-react';
 import { defineConfig, transformWithEsbuild } from 'vite';
 import pkg from '@douyinfe/vite-plugin-semi';
 import path from 'path';
+import fs from 'fs';
 import { codeInspectorPlugin } from 'code-inspector-plugin';
 const { vitePluginSemi } = pkg;
 
+function resolveDouyinfePackageDir(packageName) {
+  const scopedPackageName = `@douyinfe/${packageName}`;
+  const directPath = path.resolve(__dirname, './node_modules', scopedPackageName);
+  if (fs.existsSync(directPath)) {
+    return directPath;
+  }
+
+  const pnpmDir = path.resolve(__dirname, './node_modules/.pnpm');
+  if (!fs.existsSync(pnpmDir)) {
+    return null;
+  }
+
+  const match = fs
+    .readdirSync(pnpmDir)
+    .find((name) => name.startsWith(`@douyinfe+${packageName}@`));
+
+  if (!match) {
+    return null;
+  }
+
+  const resolved = path.join(pnpmDir, match, 'node_modules', scopedPackageName);
+
+  return fs.existsSync(resolved) ? resolved : null;
+}
+
+const semiThemeDefaultDir = resolveDouyinfePackageDir('semi-theme-default');
+const semiIllustrationsDir = resolveDouyinfePackageDir('semi-illustrations');
+
+function resolvePackageDir(packageName) {
+  const directPath = path.resolve(__dirname, './node_modules', packageName);
+  if (fs.existsSync(directPath)) {
+    return directPath;
+  }
+
+  const pnpmDir = path.resolve(__dirname, './node_modules/.pnpm');
+  if (!fs.existsSync(pnpmDir)) {
+    return null;
+  }
+
+  const normalizedName = packageName.replace(/\//g, '+');
+  const match = fs
+    .readdirSync(pnpmDir)
+    .find((name) => name.startsWith(`${normalizedName}@`));
+
+  if (!match) {
+    return null;
+  }
+
+  const resolved = path.join(pnpmDir, match, 'node_modules', packageName);
+  return fs.existsSync(resolved) ? resolved : null;
+}
+
+const highlightJsDir = resolvePackageDir('highlight.js');
+
+function ensureSemiThemeDefaultLinkAt(linkPath) {
+  if (!semiThemeDefaultDir) {
+    return;
+  }
+
+  if (fs.existsSync(linkPath)) {
+    return;
+  }
+
+  fs.mkdirSync(path.dirname(linkPath), { recursive: true });
+  fs.symlinkSync(semiThemeDefaultDir, linkPath, 'junction');
+}
+
+function ensureSemiThemeDefaultLinks() {
+  const linkTargets = [
+    path.resolve(__dirname, './node_modules/@douyinfe/semi-theme-default'),
+  ];
+
+  const pnpmDir = path.resolve(__dirname, './node_modules/.pnpm');
+  if (fs.existsSync(pnpmDir)) {
+    for (const name of fs.readdirSync(pnpmDir)) {
+      if (!name.startsWith('@douyinfe+semi-')) {
+        continue;
+      }
+      linkTargets.push(
+        path.join(
+          pnpmDir,
+          name,
+          'node_modules/@douyinfe/semi-theme-default',
+        ),
+      );
+    }
+  }
+
+  for (const linkPath of linkTargets) {
+    ensureSemiThemeDefaultLinkAt(linkPath);
+  }
+}
+
+ensureSemiThemeDefaultLinks();
+
+function ensureOptionalPackageLink(linkPath, packageDir) {
+  if (!packageDir) {
+    return;
+  }
+
+  if (fs.existsSync(linkPath)) {
+    return;
+  }
+
+  fs.mkdirSync(path.dirname(linkPath), { recursive: true });
+  fs.symlinkSync(packageDir, linkPath, 'junction');
+}
+
+ensureOptionalPackageLink(
+  path.resolve(__dirname, './node_modules/@douyinfe/semi-illustrations'),
+  semiIllustrationsDir,
+);
+ensureOptionalPackageLink(
+  path.resolve(__dirname, './node_modules/highlight.js'),
+  highlightJsDir,
+);
+
 // https://vitejs.dev/config/
 export default defineConfig({
+  css: {
+    preprocessorOptions: {
+      scss: {
+        importer(url) {
+          if (!url.startsWith('~')) {
+            return null;
+          }
+
+          return {
+            file: path.resolve(__dirname, 'node_modules', url.slice(1)),
+          };
+        },
+      },
+    },
+  },
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
+      ...(semiThemeDefaultDir
+        ? {
+            '@douyinfe/semi-theme-default': semiThemeDefaultDir,
+            '~@douyinfe/semi-theme-default': semiThemeDefaultDir,
+          }
+        : {}),
+      ...(semiIllustrationsDir
+        ? {
+            '@douyinfe/semi-illustrations': semiIllustrationsDir,
+          }
+        : {}),
+      ...(highlightJsDir
+        ? {
+            'highlight.js': highlightJsDir,
+          }
+        : {}),
     },
   },
   plugins: [

@@ -1,0 +1,97 @@
+- generic [ref=e3]:
+  - generic [ref=e7]:
+    - link "logo New API" [ref=e129] [cursor=pointer]:
+      - /url: /
+      - img "logo" [ref=e12]
+      - heading "New API" [level=4] [ref=e130]
+    - navigation [ref=e17]:
+      - link "Home" [ref=e131] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e132]: Home
+      - link "Console" [ref=e133] [cursor=pointer]:
+        - /url: /console
+        - generic [ref=e134]: Console
+      - link "Model Marketplace" [ref=e135] [cursor=pointer]:
+        - /url: /pricing
+        - generic [ref=e136]: Model Marketplace
+      - link "Documentation" [ref=e137] [cursor=pointer]:
+        - /url: https://docs.newapi.pro
+        - generic [ref=e138]: Documentation
+      - link "About" [ref=e139] [cursor=pointer]:
+        - /url: /about
+        - generic [ref=e140]: About
+    - generic [ref=e30]:
+      - button "System Notice" [ref=e31] [cursor=pointer]:
+        - img [ref=e33]
+      - button "Switch Theme" [ref=e37] [cursor=pointer]:
+        - img [ref=e39]
+      - button "Change Language" [ref=e41] [cursor=pointer]:
+        - img [ref=e43]
+      - button "A admin" [ref=e142] [cursor=pointer]:
+        - generic [ref=e143]:
+          - listitem [ref=e144]:
+            - img "A" [ref=e146]
+          - generic [ref=e147]: admin
+          - img [ref=e148]
+  - generic [ref=e54]:
+    - main [ref=e55]:
+      - generic [ref=e59]:
+        - generic [ref=e60]:
+          - generic [ref=e61]: System initialization
+          - generic [ref=e62]: Welcome! Please complete the following settings to start using the system
+        - generic [ref=e64]:
+          - generic [ref=e66]:
+            - img "tick_circle" [ref=e150]:
+              - img [ref=e151]
+            - generic [ref=e70]:
+              - generic [ref=e72]: Database Check
+              - generic [ref=e73]: Verify database connection status
+          - generic [ref=e75]:
+            - img "tick_circle" [ref=e204]:
+              - img [ref=e205]
+            - generic [ref=e79]:
+              - generic [ref=e81]: Admin account
+              - generic [ref=e82]: Set administrator login information
+          - generic [ref=e84]:
+            - img "tick_circle" [ref=e238]:
+              - img [ref=e239]
+            - generic [ref=e88]:
+              - generic [ref=e90]: Usage mode
+              - generic [ref=e91]: Select system running mode
+          - generic [ref=e93]:
+            - generic [ref=e96]: "4"
+            - generic [ref=e97]:
+              - generic [ref=e99]: Complete initialization
+              - generic [ref=e100]: Confirm settings and complete initialization
+        - generic [ref=e102]:
+          - text: "* * *"
+          - generic [ref=e242]:
+            - listitem [ref=e243]:
+              - img [ref=e244]
+            - heading "Ready to complete initialization" [level=3] [ref=e247]
+            - generic [ref=e248]: Please confirm the following settings information, click "Initialize system" to start configuration
+            - table [ref=e250]:
+              - rowgroup [ref=e251]:
+                - row "Database Type PostgreSQL" [ref=e252]:
+                  - rowheader "Database Type" [ref=e253]
+                  - cell "PostgreSQL" [ref=e254]
+                - row "Admin account admin" [ref=e255]:
+                  - rowheader "Admin account" [ref=e256]
+                  - cell "admin" [ref=e257]
+                - row "Usage mode Default mode" [ref=e258]:
+                  - rowheader "Usage mode" [ref=e259]
+                  - cell "Default mode" [ref=e260]
+            - generic [ref=e261]:
+              - button "Previous" [ref=e262] [cursor=pointer]:
+                - generic [ref=e263]: Previous
+              - button "check_circle_stroked Initialize system" [ref=e264] [cursor=pointer]:
+                - generic [ref=e265]:
+                  - img "check_circle_stroked" [ref=e266]:
+                    - img [ref=e267]
+                  - generic [ref=e269]: Initialize system
+    - generic [ref=e123]:
+      - generic [ref=e125]: © 2026 New API. All rights reserved
+      - generic [ref=e126]:
+        - generic [ref=e127]: Designed & Developed by
+        - link "New API" [ref=e128] [cursor=pointer]:
+          - /url: https://github.com/QuantumNous/new-api

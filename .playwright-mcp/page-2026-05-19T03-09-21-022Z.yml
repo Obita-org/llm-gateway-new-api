@@ -1,0 +1,119 @@
+- generic [ref=e3]:
+  - generic [ref=e7]:
+    - link "logo New API" [ref=e9] [cursor=pointer]:
+      - /url: /
+      - img "logo" [ref=e11]
+      - heading "New API" [level=4] [ref=e14]
+    - navigation [ref=e15]:
+      - link "Home" [ref=e16] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e17]: Home
+      - link "Console" [ref=e18] [cursor=pointer]:
+        - /url: /console
+        - generic [ref=e19]: Console
+      - link "Model Marketplace" [ref=e20] [cursor=pointer]:
+        - /url: /pricing
+        - generic [ref=e21]: Model Marketplace
+      - link "Documentation" [ref=e22] [cursor=pointer]:
+        - /url: https://docs.newapi.pro
+        - generic [ref=e23]: Documentation
+      - link "About" [ref=e24] [cursor=pointer]:
+        - /url: /about
+        - generic [ref=e25]: About
+    - generic [ref=e26]:
+      - button "System Notice" [ref=e27] [cursor=pointer]:
+        - img [ref=e29]
+      - button "Switch Theme" [ref=e33] [cursor=pointer]:
+        - img [ref=e35]
+      - button "Change Language" [ref=e37] [cursor=pointer]:
+        - img [ref=e39]
+      - button "A admin" [ref=e44] [cursor=pointer]:
+        - generic [ref=e45]:
+          - listitem [ref=e46]:
+            - img "A" [ref=e48]
+          - generic [ref=e49]: admin
+          - img [ref=e50]
+  - generic [ref=e53]:
+    - main [ref=e54]:
+      - generic [ref=e59]:
+        - generic [ref=e60]:
+          - heading "The Unified LLM API Gateway" [level=1] [ref=e61]:
+            - text: The Unified
+            - text: LLM API Gateway
+          - paragraph [ref=e62]: "Unified multi-model access, just replace the base URL with:"
+          - generic [ref=e64]:
+            - textbox [ref=e65]: http://localhost:3000
+            - generic [ref=e67]:
+              - listbox [ref=e72]:
+                - option "/v1/chat/completions" [ref=e73] [cursor=pointer]
+                - option "/v1/responses" [ref=e74] [cursor=pointer]
+                - option "/v1/responses/compact" [ref=e75] [cursor=pointer]
+                - option "/v1/messages" [ref=e76] [cursor=pointer]
+                - option "/v1beta/models" [ref=e77] [cursor=pointer]
+                - option "/v1/embeddings" [ref=e78] [cursor=pointer]
+                - option "/v1/rerank" [ref=e79] [cursor=pointer]
+                - option "/v1/images/generations" [ref=e80] [cursor=pointer]
+                - option "/v1/images/edits" [ref=e81] [cursor=pointer]
+                - option "/v1/images/variations" [ref=e82] [cursor=pointer]
+                - option "/v1/audio/speech" [ref=e83] [cursor=pointer]
+                - option "/v1/audio/transcriptions" [ref=e84] [cursor=pointer]
+                - option "/v1/audio/translations" [ref=e85] [cursor=pointer]
+                - option "/v1/chat/completions" [ref=e86] [cursor=pointer]
+                - option "/v1/responses" [ref=e87] [cursor=pointer]
+                - option "/v1/responses/compact" [ref=e88] [cursor=pointer]
+                - option "/v1/messages" [ref=e89] [cursor=pointer]
+                - option "/v1beta/models" [ref=e90] [cursor=pointer]
+                - option "/v1/embeddings" [ref=e91] [cursor=pointer]
+                - option "/v1/rerank" [ref=e92] [cursor=pointer]
+                - option "/v1/images/generations" [ref=e93] [cursor=pointer]
+                - option "/v1/images/edits" [ref=e94] [cursor=pointer]
+                - option "/v1/images/variations" [ref=e95] [cursor=pointer]
+                - option "/v1/audio/speech" [ref=e96] [cursor=pointer]
+                - option "/v1/audio/transcriptions" [ref=e97] [cursor=pointer]
+                - option "/v1/audio/translations" [ref=e98] [cursor=pointer]
+              - button "copy" [ref=e99] [cursor=pointer]:
+                - img "copy" [ref=e101]:
+                  - img [ref=e102]
+        - generic [ref=e105]:
+          - link "play Get Key" [ref=e106] [cursor=pointer]:
+            - /url: /console
+            - button "play Get Key" [ref=e107]:
+              - generic [ref=e108]:
+                - img "play" [ref=e109]:
+                  - img [ref=e110]
+                - generic [ref=e112]: Get Key
+          - button "file Documentation" [ref=e113] [cursor=pointer]:
+            - generic [ref=e114]:
+              - img "file" [ref=e115]:
+                - img [ref=e116]
+              - generic [ref=e118]: Documentation
+        - generic [ref=e119]:
+          - generic [ref=e121]: Supporting various LLM providers
+          - generic [ref=e122]:
+            - img "MoonshotAI" [ref=e124]
+            - img "OpenAI" [ref=e127]
+            - img "Grok" [ref=e130]
+            - img "Zhipu" [ref=e133]
+            - img "Volcengine" [ref=e136]
+            - img "Cohere" [ref=e142]
+            - img "Claude" [ref=e147]
+            - img "Gemini" [ref=e150]
+            - img "Suno" [ref=e156]
+            - img "Minimax" [ref=e159]
+            - img "Wenxin" [ref=e162]
+            - img "Spark" [ref=e166]
+            - img "Qingyan" [ref=e171]
+            - img "DeepSeek" [ref=e175]
+            - img "Qwen" [ref=e178]
+            - img "Midjourney" [ref=e181]
+            - img "Grok" [ref=e184]
+            - img "AzureAI" [ref=e187]
+            - img "Hunyuan" [ref=e192]
+            - img "Xinference" [ref=e199]
+            - generic [ref=e204]: 30+
+    - generic [ref=e209]:
+      - generic [ref=e211]: © 2026 New API. All rights reserved
+      - generic [ref=e212]:
+        - generic [ref=e213]: Designed & Developed by
+        - link "New API" [ref=e214] [cursor=pointer]:
+          - /url: https://github.com/QuantumNous/new-api
