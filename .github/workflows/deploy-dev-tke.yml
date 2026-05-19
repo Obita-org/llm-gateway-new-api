@@ -1,0 +1,317 @@
+name: Deploy to Tencent TKE dev
+
+on:
+  push:
+    branches:
+      - 'feature*'
+      - 'feature/**'
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: 'Branch to deploy. Leave empty to use the selected workflow ref.'
+        required: false
+        type: string
+
+concurrency:
+  group: deploy-dev-tke
+  cancel-in-progress: false
+
+env:
+  APP_NAME: llm-gateway-new-api
+  APP_PORT: '3000'
+  DEPLOY_NAMESPACE: dev
+  IMAGE_PULL_SECRET: tcr-regcred
+  TCR_REGISTRY: hkccr.ccs.tencentyun.com
+  TCR_NAMESPACE: obitarepo
+
+jobs:
+  build-and-deploy:
+    name: Build and deploy to dev
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Resolve ref
+        id: ref
+        shell: bash
+        env:
+          INPUT_BRANCH: ${{ inputs.branch }}
+          DEFAULT_REF: ${{ github.ref_name }}
+          EVENT_NAME: ${{ github.event_name }}
+        run: |
+          set -euo pipefail
+
+          if [ "$EVENT_NAME" = "workflow_dispatch" ] && [ -n "$INPUT_BRANCH" ]; then
+            ref="$INPUT_BRANCH"
+          else
+            ref="$DEFAULT_REF"
+          fi
+
+          echo "ref=$ref" >> "$GITHUB_OUTPUT"
+
+      - name: Check out
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ steps.ref.outputs.ref }}
+          fetch-depth: 1
+
+      - name: Resolve image metadata
+        id: meta
+        shell: bash
+        env:
+          CHECKOUT_REF: ${{ steps.ref.outputs.ref }}
+        run: |
+          set -euo pipefail
+
+          branch="$(git rev-parse --abbrev-ref HEAD)"
+          if [ "$branch" = "HEAD" ]; then
+            branch="$CHECKOUT_REF"
+          fi
+
+          branch_safe="$(printf '%s' "$branch" | tr '/:@ ' '----' | tr -cd 'A-Za-z0-9_.-')"
+          short_sha="$(git rev-parse --short=7 HEAD)"
+          tag="build-dev-${branch_safe}-${GITHUB_RUN_NUMBER}-${short_sha}"
+          image="${TCR_REGISTRY}/${TCR_NAMESPACE}/${APP_NAME}:${tag}"
+
+          echo "branch=$branch" >> "$GITHUB_OUTPUT"
+          echo "branch_safe=$branch_safe" >> "$GITHUB_OUTPUT"
+          echo "short_sha=$short_sha" >> "$GITHUB_OUTPUT"
+          echo "tag=$tag" >> "$GITHUB_OUTPUT"
+          echo "image=$image" >> "$GITHUB_OUTPUT"
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to Tencent TCR
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.TCR_REGISTRY }}
+          username: ${{ secrets.TCR_USERNAME }}
+          password: ${{ secrets.TCR_PASSWORD }}
+
+      - name: Build and push image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          platforms: linux/amd64
+          push: true
+          tags: ${{ steps.meta.outputs.image }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - name: Configure SSH key
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "${{ secrets.BASTION_SSH_PRIVATE_KEY }}" > ~/.ssh/bastion_key
+          chmod 600 ~/.ssh/bastion_key
+
+      - name: Render Kubernetes manifest
+        env:
+          IMAGE_URI: ${{ steps.meta.outputs.image }}
+          DEV_SQL_DSN: ${{ secrets.DEV_SQL_DSN }}
+          DEV_REDIS_CONN_STRING: ${{ secrets.DEV_REDIS_CONN_STRING }}
+          DEV_SESSION_SECRET: ${{ secrets.DEV_SESSION_SECRET }}
+          DEV_CRYPTO_SECRET: ${{ secrets.DEV_CRYPTO_SECRET }}
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          b64() {
+            printf '%s' "$1" | base64 -w 0
+          }
+
+          cat > k8s-dev.yml <<EOF
+          apiVersion: v1
+          kind: Secret
+          metadata:
+            name: ${APP_NAME}-secret
+            namespace: ${DEPLOY_NAMESPACE}
+          type: Opaque
+          data:
+            SQL_DSN: $(b64 "$DEV_SQL_DSN")
+            REDIS_CONN_STRING: $(b64 "$DEV_REDIS_CONN_STRING")
+            SESSION_SECRET: $(b64 "$DEV_SESSION_SECRET")
+            CRYPTO_SECRET: $(b64 "$DEV_CRYPTO_SECRET")
+          ---
+          apiVersion: apps/v1
+          kind: Deployment
+          metadata:
+            name: ${APP_NAME}
+            namespace: ${DEPLOY_NAMESPACE}
+            labels:
+              app: ${APP_NAME}
+          spec:
+            replicas: 1
+            selector:
+              matchLabels:
+                app: ${APP_NAME}
+            template:
+              metadata:
+                labels:
+                  app: ${APP_NAME}
+              spec:
+                imagePullSecrets:
+                  - name: ${IMAGE_PULL_SECRET}
+                containers:
+                  - name: ${APP_NAME}
+                    image: ${IMAGE_URI}
+                    imagePullPolicy: Always
+                    ports:
+                      - containerPort: ${APP_PORT}
+                        name: http
+                    startupProbe:
+                      httpGet:
+                        path: /api/status
+                        port: http
+                      timeoutSeconds: 5
+                      periodSeconds: 10
+                      failureThreshold: 30
+                    readinessProbe:
+                      httpGet:
+                        path: /api/status
+                        port: http
+                      initialDelaySeconds: 15
+                      timeoutSeconds: 5
+                      periodSeconds: 10
+                      failureThreshold: 6
+                      successThreshold: 1
+                    livenessProbe:
+                      httpGet:
+                        path: /api/status
+                        port: http
+                      initialDelaySeconds: 45
+                      timeoutSeconds: 5
+                      periodSeconds: 30
+                      failureThreshold: 3
+                    env:
+                      - name: PORT
+                        value: "${APP_PORT}"
+                      - name: TZ
+                        value: Asia/Shanghai
+                      - name: NODE_NAME
+                        value: ${APP_NAME}-dev
+                      - name: SQL_DSN
+                        valueFrom:
+                          secretKeyRef:
+                            name: ${APP_NAME}-secret
+                            key: SQL_DSN
+                      - name: REDIS_CONN_STRING
+                        valueFrom:
+                          secretKeyRef:
+                            name: ${APP_NAME}-secret
+                            key: REDIS_CONN_STRING
+                      - name: SESSION_SECRET
+                        valueFrom:
+                          secretKeyRef:
+                            name: ${APP_NAME}-secret
+                            key: SESSION_SECRET
+                      - name: CRYPTO_SECRET
+                        valueFrom:
+                          secretKeyRef:
+                            name: ${APP_NAME}-secret
+                            key: CRYPTO_SECRET
+          ---
+          apiVersion: v1
+          kind: Service
+          metadata:
+            name: ${APP_NAME}
+            namespace: ${DEPLOY_NAMESPACE}
+          spec:
+            selector:
+              app: ${APP_NAME}
+            ports:
+              - name: http
+                protocol: TCP
+                port: ${APP_PORT}
+                targetPort: http
+          EOF
+
+      - name: Deploy to Tencent TKE via bastion
+        env:
+          TCR_USERNAME: ${{ secrets.TCR_USERNAME }}
+          TCR_PASSWORD: ${{ secrets.TCR_PASSWORD }}
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          ssh_opts=(
+            -i ~/.ssh/bastion_key
+            -o StrictHostKeyChecking=accept-new
+            -o UserKnownHostsFile=/dev/null
+            -p 22
+          )
+
+          shell_quote() {
+            printf '%q' "$1"
+          }
+
+          tcr_registry_q="$(shell_quote "$TCR_REGISTRY")"
+          deploy_namespace_q="$(shell_quote "$DEPLOY_NAMESPACE")"
+          image_pull_secret_q="$(shell_quote "$IMAGE_PULL_SECRET")"
+          tcr_username_q="$(shell_quote "$TCR_USERNAME")"
+          tcr_password_q="$(shell_quote "$TCR_PASSWORD")"
+
+          ssh "${ssh_opts[@]}" "${{ secrets.BASTION_USER }}@${{ secrets.BASTION_HOST }}" \
+            "TCR_REGISTRY=${tcr_registry_q} DEPLOY_NAMESPACE=${deploy_namespace_q} IMAGE_PULL_SECRET=${image_pull_secret_q} TCR_USERNAME=${tcr_username_q} TCR_PASSWORD=${tcr_password_q} bash -s" <<'REMOTE_SCRIPT'
+          set -euo pipefail
+
+          if ! kubectl -n "${DEPLOY_NAMESPACE}" get secret "${IMAGE_PULL_SECRET}" >/dev/null 2>&1; then
+            kubectl -n "${DEPLOY_NAMESPACE}" create secret docker-registry "${IMAGE_PULL_SECRET}" \
+              --docker-server="${TCR_REGISTRY}" \
+              --docker-username="${TCR_USERNAME}" \
+              --docker-password="${TCR_PASSWORD}"
+          else
+            echo "secret ${IMAGE_PULL_SECRET} already exists"
+          fi
+          REMOTE_SCRIPT
+
+          ssh "${ssh_opts[@]}" "${{ secrets.BASTION_USER }}@${{ secrets.BASTION_HOST }}" \
+            "kubectl apply -f - -n ${DEPLOY_NAMESPACE}" < k8s-dev.yml
+
+          ssh "${ssh_opts[@]}" "${{ secrets.BASTION_USER }}@${{ secrets.BASTION_HOST }}" \
+            "kubectl rollout status deployment/${APP_NAME} --timeout=300s -n ${DEPLOY_NAMESPACE}"
+
+      - name: Deployment summary
+        if: success()
+        shell: bash
+        run: |
+          {
+            echo "### Tencent TKE dev deployment"
+            echo ""
+            echo "- Branch: \`${{ steps.meta.outputs.branch }}\`"
+            echo "- Commit: \`${{ steps.meta.outputs.short_sha }}\`"
+            echo "- Image: \`${{ steps.meta.outputs.image }}\`"
+            echo "- Namespace: \`${DEPLOY_NAMESPACE}\`"
+            echo "- Deployment: \`${APP_NAME}\`"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Print debug info on failure
+        if: failure()
+        shell: bash
+        run: |
+          set +e
+
+          if [ ! -f ~/.ssh/bastion_key ]; then
+            echo "SSH key was not configured; skipping kubectl diagnostics."
+            exit 0
+          fi
+
+          ssh_opts=(
+            -i ~/.ssh/bastion_key
+            -o StrictHostKeyChecking=accept-new
+            -o UserKnownHostsFile=/dev/null
+            -p 22
+          )
+
+          ssh "${ssh_opts[@]}" "${{ secrets.BASTION_USER }}@${{ secrets.BASTION_HOST }}" \
+            "kubectl get pods -l app=${APP_NAME} -n ${DEPLOY_NAMESPACE}" || true
+          ssh "${ssh_opts[@]}" "${{ secrets.BASTION_USER }}@${{ secrets.BASTION_HOST }}" \
+            "kubectl describe deployment/${APP_NAME} -n ${DEPLOY_NAMESPACE}" || true
+          ssh "${ssh_opts[@]}" "${{ secrets.BASTION_USER }}@${{ secrets.BASTION_HOST }}" \
+            "kubectl describe pods -l app=${APP_NAME} -n ${DEPLOY_NAMESPACE}" || true
+          ssh "${ssh_opts[@]}" "${{ secrets.BASTION_USER }}@${{ secrets.BASTION_HOST }}" \
+            "kubectl logs -l app=${APP_NAME} --tail=80 -n ${DEPLOY_NAMESPACE}" || true
